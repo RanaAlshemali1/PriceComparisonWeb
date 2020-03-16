@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="assets/img/PriceIcon.ico">
+  <style>#div1 {
+	color: black;
+	overflow: auto;
+ 
+ 
+}
+
+#div0, #div2, #div3 ,#div4{
+	clear: both;
+}
+
+#div1::-webkit-scrollbar {
+	width: 0 !important;
+}
+
+</style>
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>Compare Prices - MEZ-Price Comparison!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
+    
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <script src="assets/js/chart-master/Chart.js"></script>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script type="text/javascript">
+	
+	Parse.initialize("PLGgQP2tfCY9Q3PUrQTJIXIwSDliapBOx3wE2yId", "OSLFbcKnyp7jD7ewgrm6YI7xysk5F0TaiTyB9VZy");
+	$(document).ready(function() {
+	
+		Parse.initialize("PLGgQP2tfCY9Q3PUrQTJIXIwSDliapBOx3wE2yId", "OSLFbcKnyp7jD7ewgrm6YI7xysk5F0TaiTyB9VZy");
+		var currentUser = Parse.User.current();
+		var i=0;
+		if (currentUser) {		
+			// do stuff with the user
+			CreateList("My Wish List","WishList.html",i++,"fa fa-shopping-cart");
+			CreateList("Logout","Logout.html",i++,"fa fa-sign-out");
+			CreateList("Hello "+ currentUser.get('username')+"!","#",i++,"fa fa-user");
+			 
+		} else {
+			CreateList("Login","Login.html",i++,"fa fa-sign-in");
+			CreateList("Sign Up","Signup.html",i++,"fa fa-pencil");
+		 }
+	});
+
+	function CreateList(name,link,i,menuIcon ){
+		var listItem = document.createElement("li");
+		listItem.id = "listItem"+i;
+		document.getElementById("log").appendChild(listItem);
+		
+		var a = document.createElement('a');
+		a.id="a"+i;
+		a.href = link;
+		a.title = name;
+	 	document.getElementById(listItem.id).appendChild(a);
+	 	
+	 	var icon = document.createElement("i");
+		icon.id = "icon"+i;
+		icon.className= menuIcon;
+		document.getElementById(a.id).appendChild(icon); 
+	 	var nameSpan = document.createElement("span");
+	 	nameSpan.id = "nameSpan"+i;
+		var listName = document.createTextNode(" "+name);
+		document.getElementById(a.id).appendChild(nameSpan);
+		document.getElementById(nameSpan.id).appendChild(listName);
+			}
+</script> 
+
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="./home.html" class="logo"><b>MEZ-Price Comparison!</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    
+                    <!-- settings end -->
+                    <!-- inbox dropdown start-->
+              
+                    <!-- inbox dropdown end -->
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="./Home.html">Home</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+              	  <p class="centered"><img src="assets/img/Price.jpg" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered">MEZNAH</h5>
+              	  	
+                  <li class="mt">
+                      <a href="home.html">
+                        <i class="fa fa-home"></i>
+                          <span>Home</span>
+                      </a>
+                  </li>
+                  <li class="mt1">
+                      <a class="active"  href="ComparePrices.html">
+                          <i class="fa fa-usd"></i>
+                          <span>Compare Prices</span>
+                      </a>
+                  </li>
+                  
+                  <li class="mt2">
+                      <a href="ContactUs.html">
+                          <i class="fa fa-envelope"></i>
+                          <span>Contact Us</span>
+                      </a>
+                  </li>
+                  
+                  <li class="mt3">
+                      <a href="About.html">
+                          <i class="fa fa-star"></i>
+                          <span>About</span>
+                      </a>
+                  </li>
+                  
+                  <li class="mt4">
+                      <a href="FAQ.html">
+                          <i class="fa fa-question"></i>
+                          <span>FAQ</span>
+                      </a>
+                  </li>
+                  
+            
+                  <div id=log></div>
+              
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+
+ <section id="main-content">
+          <section class="wrapper site-min-height">
+          	<h3 style="color: #FF0080"><i class="fa fa-angle-right"></i> Price Comparison</h3>
+          	
+          		<div id=div1>
+
+		<form name="Item">
+			<input id="UserItem" name="UserInput"> <input id="input"
+				type="button" value="Find Prices"> <span id="results"></span>
+				</form>
+				 <form name="Store">
+				<input type="checkbox" id="Target" name="Target" value="male">Target
+				<input type="checkbox" id="Wal-Mart" name="Wal-Mart" value="female">Wal-Mart
+				<!-- <input type="checkbox" id="Amazon" name="Amazon" value="female">Amazon -->
+				<input type="checkbox" id="BestBuy" name="BestBuy" value="female">BestBuy
+				<input type="checkbox" id="SelectAll" name="SelectAll" value="female">Select All
+				 </form>
+
+				
+				<div id=div0> </div>
+				<div id=div2> </div>
+				<div id=div3> </div>
+				<div id=div4> </div>
+
+	</div>
+			
+		</section><! --/wrapper -->
+      </section>
+
+
+ <title>MEZ-Price Comparison!</title>
+
+	
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+	<script type="text/javascript">
+
+	
+		var pic;
+		var k = 0;
+		var j = 0;
+		$(document)
+				.ready(
+						function() {
+							
+							
+							$("#input").click(function() {
+								
+								
+							if($('#SelectAll').is(':checked')){
+								 
+								$("#BestBuy").attr('checked', true);
+								//$( "#Amazon" ).attr('checked', true);
+								$( "#Wal-Mart" ).attr('checked', true);
+								$( "#Target" ).attr('checked', true);
+								 
+							}
+						});
+							
+							$("#input").click(function() {
+								$("#div0").empty();
+								$("#div2").empty();
+								$("#div3").empty();
+								$("#div4").empty();
+
+							
+							});
+
+							$("#input")
+									//Wal-mart
+									.click(
+											function() {
+												if($('#Wal-Mart').is(':checked')) { 
+												var i = document.forms["Item"]["UserInput"].value;
+
+												$
+												.ajax({
+													url : "http://api.walmartlabs.com/v1/search?query="+i+"&format=json&apiKey=86jc6pk2crwfp9dgn8mnc3yt"	,
+															type : "GET",
+																	cache : true,
+															dataType : "jsonp",
+															success : function(
+																	parsed_json) {
+																var Woutput = parsed_json['numItems'];
+																if (Woutput > 5) {
+																	Woutput = 5;
+																}
+																var search = document.forms["Item"]["UserInput"].value;
+																var inputSplit;
+																inputSplit = search;
+																var inputArray = inputSplit.split(" ");
+
+																for (j = 1; j < inputArray.length; j++) {
+
+																	inputArray.splice(j, 0, "+");
+
+																	j++;
+																}
+																var inputResult;
+																inputResult = inputArray.join("");
+																
+																var i;																
+																var name;
+																var price;
+																var pic;
+																var container = 0;
+																var logo = "http://s21.postimg.org/cp5zlxmb7/walmart.png";
+																var cartLogo = "http://s8.postimg.org/cptij8pq9/Capture_icon.png";
+																show_logo(logo, container); 
+																var storeImage = "http://s17.postimg.org/imb28yb8r/Capture.png";
+																//var storeImage = "http://oi66.tinypic.com/s42tm0.jpg";
+																
+																var randIndex = Math.floor(Math.random()*Woutput +0 );
+																if( parsed_json['items'][randIndex]['salePrice']==null){
+																	price="Check Walmart Site for Price";
+																}else{
+																	var price = parsed_json['items'][randIndex]['salePrice'];
+																	price= "$"+price;
+																}
+																
+																var pic = parsed_json['items'][randIndex]['thumbnailImage'];
+																var name = parsed_json['items'][randIndex]['name'];
+																var link = parsed_json['items'][randIndex]['productUrl'];
+																store_info(inputResult,
+																		name,
+																		price,
+																		pic,
+																		link,
+																		cartLogo);
+																
+																for (i = 0; i < Woutput; i++) {
+																	if( parsed_json['items'][i]['salePrice']==null){
+																		price="Check Walmart Site for Price";
+																	}else{
+																		var price = parsed_json['items'][i]['salePrice'];
+																		price= "$"+price;
+																	}
+																	
+																	var pic = parsed_json['items'][i]['thumbnailImage'];
+																	var name = parsed_json['items'][i]['name'];
+																	var link = parsed_json['items'][i]['productUrl'];
+																	
+																	
+																	show_info(
+																			name,
+																			price,
+																			pic,
+																			link,
+																			storeImage,
+																			container,cartLogo);
+																}
+
+															}
+														});
+											}});
+							
+
+							$("#input")
+									//Target
+									.click(
+											function() {
+												if($('#Target').is(':checked')) { 
+												var i = document.forms["Item"]["UserInput"].value;
+												var y;
+												y = i;
+												var array = y.split(" ");
+
+												for (j = 1; j < array.length; j++) {
+
+													array.splice(j, 0, "+");
+
+													j++;
+												}
+												var x;
+												x = array.join("");
+												
+												$
+														.ajax({
+															url : "https://api.import.io/store/data/634be122-9cc9-4ae0-8927-538ff9daf725/_query?input/webpage/url=http%3A%2F%2Fwww.target.com%2Fs%3FsearchTerm="
+																	+ x
+																	+ "&_user=fc2d2041-9d96-4e02-af8a-a0916e49e247&_apikey=fc2d20419d964e02af8aa0916e49e247d3cd6243902e6e342257411adcf08f85cbf72e579b9b548f68b91c1d3e90121111abe75321a4b598a7a43326469d17a52c670aa6d7b5959585083101871cd567",
+															type : "GET",
+
+															contentType : "application/json; charset=utf-8",
+															dataType : "json",
+															cache : true,
+
+															success : function(
+																	parsed_json) {
+																var Woutput = parsed_json['results'].length;
+															 
+																if (Woutput > 5) {
+																	Woutput = 5;
+																}
+																var i;
+																var name;
+																var price;
+																var pic;
+																var storeImage = "http://s7.postimg.org/5964ug1pz/target.png";
+																var container = 2;
+																var logo = "http://s11.postimg.org/hcfcwm8f3/target.png";
+																var cartLogo ="http://s22.postimg.org/atyyk51fx/target_icon.png";
+																show_logo(logo, container); 
+																
+																var randIndex = Math.floor(Math.random()*Woutput +0 );
+																if( parsed_json['results'][randIndex]['price']==null){
+																	price="Check Target Site for Price";
+																}else{
+																	var price = parsed_json['results'][randIndex]['price'];
+																	 
+																}
+																 
+																var pic = parsed_json['results'][randIndex]['PRODUCTCLICK_IMAGE'];
+																var name = parsed_json['results'][randIndex]['link/_title'];
+																var link = parsed_json['results'][randIndex]['link'];
+																
+																		store_info(x,
+																		name,
+																		price,
+																		pic,
+																		link,
+																		cartLogo);
+																
+																
+																for (i = 0; i < Woutput; i++) {
+																	if( parsed_json['results'][i]['price']==null){
+																		price="Check Target Site for Price";
+																	}else{
+																		var price = parsed_json['results'][i]['price'];
+																		 
+																	}
+																	 
+																	var pic = parsed_json['results'][i]['PRODUCTCLICK_IMAGE'];
+																	var name = parsed_json['results'][i]['link/_title'];
+																	var link = parsed_json['results'][i]['link'];
+																	show_info(
+																			name,
+																			price,
+																			pic,
+																			link,
+																			storeImage,
+																			container, cartLogo);
+																}
+
+															}
+														});
+											}});
+
+							/*$("#input")
+									//Amazon
+									.click(
+											function() {
+												if($('#Amazon').is(':checked')) { 
+												var i = document.forms["Item"]["UserInput"].value;
+												var y;
+												y = i;
+												var array = y.split(" ");
+
+												for (j = 1; j < array.length; j++) {
+
+													array.splice(j, 0, "+");
+
+													j++;
+												}
+												var x;
+												x = array.join("");
+
+												$
+														.ajax({
+															url : "https://api.import.io/store/data/7b2805a8-96bb-48f0-ac44-ce755e3af26a/_query?input/webpage/url=http%3A%2F%2Fwww.amazon.com%2Fs%2Ffield-keywords="
+																	+ x
+																	+ "&_user=fc2d2041-9d96-4e02-af8a-a0916e49e247&_apikey=fc2d20419d964e02af8aa0916e49e247d3cd6243902e6e342257411adcf08f85cbf72e579b9b548f68b91c1d3e90121111abe75321a4b598a7a43326469d17a52c670aa6d7b5959585083101871cd567",
+															type : "GET",
+
+															contentType : "application/json; charset=utf-8",
+															dataType : "json",
+															cache : true,
+
+															success : function(
+																	parsed_json) {
+															 
+																var Woutput = parsed_json['tables']['1']['results'];
+																if (Woutput > 5) {
+																	Woutput = 5;
+																}
+																var i;
+																var name;
+																var price;
+																var pic;
+																var storeImage = "http://s12.postimg.org/6b2heaf15/amazon.png";
+																var container = 3;
+																var cartLogo ="http://s23.postimg.org/6kuscqos7/Google_Plus_Profile_Image.png";
+																var logo = "http://s22.postimg.org/imu19wfil/amazon.png";
+																show_logo(logo, container); 
+																
+																for (i = 1; i < Woutput; i++) {
+																	if( parsed_json['results'][i]['price']==null){
+																		price="Check Amazon Site for Price";
+																	}else{
+																		var price = parsed_json['results'][i]['price'];
+																		 
+																	}
+																 
+																	var pic = parsed_json['results'][(i - 1)]['ROW_IMAGE'];
+																	var name = parsed_json['results'][i]['link/_text'];
+																	var link = parsed_json['results'][i]['link'];
+																	
+																	i++;
+																	show_info(
+																			name,
+																			price,
+																			pic,
+																			link,
+																			storeImage,
+																			container, cartLogo);
+																}
+
+															}
+														});
+											}});*/
+							$("#input")
+									//bestbuy
+									.click(
+											function() {
+												if($('#BestBuy').is(':checked')) { 
+													
+												var i = document.forms["Item"]["UserInput"].value;
+												var y;
+												y = i;
+												var array = y.split(" ");
+
+												for (j = 1; j < array.length; j++) {
+
+													array.splice(j, 0, "+");
+
+													j++;
+												}
+												var x;
+												x = array.join("");
+
+												$
+														.ajax({
+															url : "https://api.import.io/store/data/543d582f-cce4-4238-ad72-6ee3f0bb3ade/_query?input/webpage/url=http%3A%2F%2Fwww.bestbuy.com%2Fsite%2Fsearchpage.jsp%3Fst="+x+"%26_dyncharset%3DUTF-8%26_dynSessConf%3DATG20211859335%26id%3Dpcat17071%26type%3Dpage%26sc%3DGlobal%26cp%3D1%26nrp%3D15%26sp%3D%26qp%3D%26list%3Dn%26iht%3Dy%26usc%3DAll%2BCategories%26ks%3D960%26keys%3Dkeys&_user=fc2d2041-9d96-4e02-af8a-a0916e49e247&_apikey=fc2d20419d964e02af8aa0916e49e247d3cd6243902e6e342257411adcf08f85cbf72e579b9b548f68b91c1d3e90121111abe75321a4b598a7a43326469d17a52c670aa6d7b5959585083101871cd567",
+															type : "GET",
+
+															contentType : "application/json; charset=utf-8",
+															dataType : "json",
+															cache : true,
+
+															success : function(
+																	parsed_json) {
+																var Woutput = parsed_json['results'].length;
+																if (Woutput > 5) {
+																	Woutput = 5;
+																}
+																var i;
+																var name;
+																var price;
+																var pic;
+																var storeImage = "http://s30.postimg.org/wzc1f8cul/image.png";
+																var container = 4;
+																var cartLogo ="http://s11.postimg.org/55l4r3mdb/Best_Buy_Twitter_Logo_normal.jpg";
+																var logo = "http://s23.postimg.org/fr6aecdiv/bestbuy.png";
+																show_logo(logo, container); 
+
+																var randIndex = Math.floor(Math.random()*Woutput +0 );
+																if( parsed_json['results'][randIndex]['price']==null){
+																	price="Check Target Site for Price";
+																}else{
+																	var price = parsed_json['results'][randIndex]['price'];
+																	 
+																}
+																 
+																var pic = parsed_json['results'][randIndex]['THUMB_IMAGE'];
+																var name = parsed_json['results'][randIndex]['link/_text'];
+																var link = parsed_json['results'][randIndex]['link'];
+																
+																		store_info(x,
+																		name,
+																		price,
+																		pic,
+																		link,
+																		cartLogo);
+																for (i = 0; i < Woutput; i++) {
+																	if(parsed_json['results'][i]['price']==null){
+																		price="Check BestBuy Site for Price";
+																	}else{
+																		var price = parsed_json['results'][i]['price'];
+																	}
+																 
+																	var pic = parsed_json['results'][i]['THUMB_IMAGE'];
+																	var name = parsed_json['results'][i]['link/_text'];
+																	var link = parsed_json['results'][i]['link'];
+																	show_info(
+																			name,
+																			price,
+																			pic,
+																			link,
+																			storeImage,
+																			container, cartLogo);
+																}
+
+															}
+														});
+											}});
+
+						}
+
+				);
+		function store_info(inputResult,name,price, pic, link,cartLogo){
+			 
+			Parse.initialize("PLGgQP2tfCY9Q3PUrQTJIXIwSDliapBOx3wE2yId", "OSLFbcKnyp7jD7ewgrm6YI7xysk5F0TaiTyB9VZy");
+			var currentUser = Parse.User.current();
+			if (currentUser) {
+			    // do stuff with the user
+			    
+			    var suggestion = Parse.Object.extend("suggestion");
+				var query = new Parse.Query(suggestion);
+				//query.equalTo("username", currentUser.get('username')).equalTo("itemName",name).equalTo("itemStore",cartLogo);
+				query.find({
+				  success: function(suggestion) {
+
+						     var suggestion = Parse.Object.extend("suggestion");
+							 var newSuggestion = new suggestion();
+							    newSuggestion.save({username: currentUser.get('username')}, {
+							      success: function(object) {
+							        $(".success").show();
+							      },
+							      error: function(model, error) {
+							        $(".error").show();
+							      }
+							    });
+							    newSuggestion.save({searchTerm: inputResult}, {
+								      success: function(object) {
+								        $(".success").show();
+								      },
+								      error: function(model, error) {
+								        $(".error").show();
+								      }
+								    });
+							    
+							    newSuggestion.save({itemName: name}, {
+							      success: function(object) {
+							        $(".success").show();
+							      },
+							      error: function(model, error) {
+							        $(".error").show();
+							      }
+							    });
+							    
+							    newSuggestion.save({itemPrice: price}, {
+								      success: function(object) {
+								        $(".success").show();
+								      },
+								      error: function(model, error) {
+								        $(".error").show();
+								      }
+								    });
+							    
+							    newSuggestion.save({itemLink: link}, {
+								      success: function(object) {
+								        $(".success").show();
+								      },
+								      error: function(model, error) {
+								        $(".error").show();
+								      }
+								    });
+							     
+							    newSuggestion.save({itemImage: pic}, {
+								      success: function(object) {
+								        $(".success").show();
+								      },
+								      error: function(model, error) {
+								        $(".error").show();
+								      }
+								    });
+							    
+							    
+							    newSuggestion.save({itemStore: cartLogo}, {
+								      success: function(object) {
+								        $(".success").show();
+								      },
+								      error: function(model, error) {
+								        $(".error").show();
+								      }
+								    });
+							    
+							    
+					
+					  
+				  }, error: function(error) {
+				    $(".error").show();
+				  }
+				});
+			    
+			    
+				
+			} else {
+			    // show the signup or login page
+				//window.location = "./login.html"	
+			}
+		   
+		}
+		
+		function show_logo(logo1, container) {
+
+			var logo = document.createElement("div");
+			var id = "logo" + container;
+			logo.id = id;
+			logo.style.border = "thin solid black";
+			logo.style.width = "40px";
+			logo.style.height = "180px";
+			logo.style.position = "relative";
+			logo.style.marginTop = "5px";
+			logo.style.marginRight = "5px";
+			logo.style.float = "left";
+			var divID = "div" + container;
+			var sotreLogo = document.createElement("img");
+			sotreLogo.id = "sotreLogo" + container;
+			sotreLogo.src=logo1;
+			sotreLogo.style.width= "40px";
+			sotreLogo.style.height= "180px";
+			document.getElementById(divID).appendChild(logo);
+			document.getElementById(logo.id).appendChild(sotreLogo);
+			
+			
+			}
+		
+		function show_info(name, price, pic, link, storeImage, container, cartLogo) {
+
+			var List = document.createElement("div");
+			var id = "List" + k;
+			List.id = id;
+		 	List.style.border = "thin solid black";
+			List.style.width = "180px";
+			List.style.height = "180px";
+			List.style.marginTop = "5px";
+			List.style.marginRight = "5px";
+			List.style.position = "relative";
+			List.style.float = "left";
+			var divID = "div" + container;
+			document.getElementById(divID).appendChild(List);
+			
+			
+			
+			var itemPic = document.createElement("div");
+			itemPic.id = "itemPic" + k;
+			var image = document.createElement("img");
+			image.id = "image" + k;
+			image.src = pic;
+			image.style.width= "100px";
+			image.style.height= "100px";
+			itemPic.style.width = "100px";
+			itemPic.style.height = "100px";
+			itemPic.style.marginTop = "1px";
+			itemPic.style.marginLeft = "50px";
+			document.getElementById(id).appendChild(itemPic);
+			document.getElementById(itemPic.id).appendChild(image);
+
+			var itemName = document.createElement("div");
+			itemName.id = "itemName" + k;
+			itemName.style.color = "black";
+			itemName.style.fontWeight = "bold"
+			itemName.style.marginTop = "3px";
+			itemName.style.marginLeft = "10px";
+			itemName.style.height = "40px";
+			itemName.style.overflow = "hidden";
+			var shortName = document.createTextNode(name+".");
+			var longName = document.createTextNode(name.substring(0, 35) + "...");
+			document.getElementById(id).appendChild(itemName);
+			var a = document.createElement('a');
+			if (name.length > 35) {
+				document.getElementById(itemName.id).appendChild(
+						longName);
+				a.appendChild(longName);
+			} else {
+				document.getElementById(itemName.id).appendChild(
+						shortName);
+				a.appendChild(shortName);
+			}
+			
+			//a.appendChild(shortName);
+			a.href = link;
+			a.title = name;
+			a.style.color  = "black";
+			a.target="_blank";
+		 	document.getElementById(itemName.id).appendChild(a);
+
+		 	
+		/* 	var goWeb = document.createElement("div");
+			goWeb.id = "goWeb" + k;
+			var img = document.createElement("img");
+			img.src = storeImage;
+			img.style.width= "100px";
+			img.style.height= "30px";
+			goWeb.style.marginTop = "5px";
+			goWeb.style.marginLeft = "25px";
+			var a = document.createElement('a');
+			a.href = link;
+			a.title = name;
+			a.target="_blank";
+			
+			document.getElementById(id).appendChild(goWeb);
+			
+			document.getElementById(goWeb.id).appendChild(img);
+			a.appendChild(img);
+			document.getElementById(goWeb.id).appendChild(a);*/
+		 	
+		
+			
+			
+			
+			
+			
+			var addCart = document.createElement("div");
+			addCart.id = "addCart" + k;
+			addCart.style.marginTop = "1px";
+			addCart.style.marginLeft = "10px";
+			addCart.style.position = "relative";
+			addCart.style.float = "left";
+			document.getElementById(id).appendChild(addCart);
+			var img1 = document.createElement("img");
+			img1.src = "http://s21.postimg.org/qw6v8dkc3/Pink_Add_to_Cart_Button1.png";
+			img1.style.width= "20px";
+			img1.style.height= "20px";
+			document.getElementById(addCart.id).appendChild(img1);	
+			
+			var a = document.createElement('a');
+			a.appendChild(img1);
+			//a.appendChild(shortName);
+			a.href =  "./WishList.html";
+			//a.title = name;
+			//a.style.color  = "black";
+			a.target="_blank";
+		 	
+			document.getElementById(addCart.id).appendChild(a);
+		 	$("#"+addCart.id).click(function () {
+		 	 
+		 		addToCart(name, price, pic, link, cartLogo);
+		 	});
+		 	
+		 	
+			var itemPrice = document.createElement("div");
+			itemPrice.id = "itemPrice" + k;
+			itemPrice.style.color = "black";
+			//itemPrice.style.marginLeft = "75px";
+			itemPrice.style.marginTop = "1px";
+			itemPrice.style.width = "180px";
+			itemPrice.style.height = "30px";
+			itemPrice.style.textAlign = "center";
+			document.getElementById(id).appendChild(itemPrice);
+			document.getElementById(itemPrice.id).appendChild(
+					document.createTextNode( price));
+			
+			k++;
+		}
+		function addToCart(name, price, pic, link, cartLogo) {
+			 
+			Parse.initialize("PLGgQP2tfCY9Q3PUrQTJIXIwSDliapBOx3wE2yId", "OSLFbcKnyp7jD7ewgrm6YI7xysk5F0TaiTyB9VZy");
+			var currentUser = Parse.User.current();
+			if (currentUser) {
+			    // do stuff with the user
+			    
+			    var Cart = Parse.Object.extend("Cart");
+				var query = new Parse.Query(Cart);
+				query.equalTo("username", currentUser.get('username')).equalTo("itemName",name).equalTo("itemStore",cartLogo);
+				query.find({
+				  success: function(Cart) {
+					  if(Cart.length==0){
+						     var Cart = Parse.Object.extend("Cart");
+							 var myCart = new Cart();
+							    myCart.save({username: currentUser.get('username')}, {
+							      success: function(object) {
+							        $(".success").show();
+							      },
+							      error: function(model, error) {
+							        $(".error").show();
+							      }
+							    });
+							    
+							    myCart.save({itemName: name}, {
+							      success: function(object) {
+							        $(".success").show();
+							      },
+							      error: function(model, error) {
+							        $(".error").show();
+							      }
+							    });
+							    
+							    myCart.save({itemPrice: price}, {
+								      success: function(object) {
+								        $(".success").show();
+								      },
+								      error: function(model, error) {
+								        $(".error").show();
+								      }
+								    });
+							    
+							    myCart.save({itemLink: link}, {
+								      success: function(object) {
+								        $(".success").show();
+								      },
+								      error: function(model, error) {
+								        $(".error").show();
+								      }
+								    });
+							     
+							    myCart.save({itemImage: pic}, {
+								      success: function(object) {
+								        $(".success").show();
+								      },
+								      error: function(model, error) {
+								        $(".error").show();
+								      }
+								    });
+							    
+							    
+							    
+							    myCart.save({itemStore: cartLogo}, {
+								      success: function(object) {
+								        $(".success").show();
+								      },
+								      error: function(model, error) {
+								        $(".error").show();
+								      }
+								    });
+					  }
+					  else{
+						  alert("You Already Have This Item From The Same Store, Go And Check Your Wish List!");
+					  }
+				  }, error: function(error) {
+				    $(".error").show();
+				  }
+				});
+			    
+			    
+				
+			} else {
+			    // show the signup or login page
+				window.location = "./login.html"	
+			}
+		   
+		}
+	</script>
+
+
+
+   <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              <p>&copy Created by: Rana Alshemali  ra2834a@american.edu.</p>
+              <a href="#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+
+  </body>
+</html>

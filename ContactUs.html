@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="assets/img/PriceIcon.ico">
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>Contact Us - MEZ-Price Comparison</title>
+
+     <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
+    
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <script src="assets/js/chart-master/Chart.js"></script>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script type="text/javascript">
+	
+	Parse.initialize("PLGgQP2tfCY9Q3PUrQTJIXIwSDliapBOx3wE2yId", "OSLFbcKnyp7jD7ewgrm6YI7xysk5F0TaiTyB9VZy");
+	$(document).ready(function() {
+		Parse.initialize("PLGgQP2tfCY9Q3PUrQTJIXIwSDliapBOx3wE2yId", "OSLFbcKnyp7jD7ewgrm6YI7xysk5F0TaiTyB9VZy");
+		
+		var currentUser = Parse.User.current();
+		var i=0;
+		if (currentUser) {		
+			// do stuff with the user
+			CreateList("My Wish List","WishList.html",i++,"fa fa-shopping-cart");
+			CreateList("Logout","Logout.html",i++,"fa fa-sign-out");
+			CreateList("Hello "+ currentUser.get('username')+"!","#",i++,"fa fa-user");
+			
+			 
+		} else {
+			CreateList("Login","Login.html",i++,"fa fa-sign-in");
+			CreateList("Sign Up","Signup.html",i++,"fa fa-pencil");
+		 }
+	});
+
+	function CreateList(name,link,i,menuIcon ){
+		var listItem = document.createElement("li");
+		listItem.id = "listItem"+i;
+		document.getElementById("log").appendChild(listItem);
+		
+		var a = document.createElement('a');
+		a.id="a"+i;
+		a.href = link;
+		a.title = name;
+	 	document.getElementById(listItem.id).appendChild(a);
+	 	
+	 	var icon = document.createElement("i");
+		icon.id = "icon"+i;
+		icon.className= menuIcon;
+		document.getElementById(a.id).appendChild(icon); 
+	 	var nameSpan = document.createElement("span");
+	 	nameSpan.id = "nameSpan"+i;
+		var listName = document.createTextNode(" "+name);
+		document.getElementById(a.id).appendChild(nameSpan);
+		document.getElementById(nameSpan.id).appendChild(listName);
+			}
+</script> 
+
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="./home.html" class="logo"><b>MEZ-Price Comparison</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    
+                    <!-- settings end -->
+                    <!-- inbox dropdown start-->
+              
+                    <!-- inbox dropdown end -->
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="./Home.html">Home</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+              	  <p class="centered"><img src="assets/img/Price.jpg" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered">MEZNAH</h5>
+              	  	
+                  <li class="mt">
+                      <a href="home.html">
+                        <i class="fa fa-home"></i>
+                          <span>Home</span>
+                      </a>
+                  </li>
+                  <li class="mt1">
+                      <a href="ComparePrices.html">
+                          <i class="fa fa-usd"></i>
+                          <span>Compare Prices</span>
+                      </a>
+                  </li>
+                  
+                  <li class="mt2">
+                      <a class="active" href="ContactUs.html">
+                          <i class="fa fa-envelope"></i>
+                          <span>Contact Us</span>
+                      </a>
+                  </li>
+                  
+                  <li class="mt3">
+                      <a href="About.html">
+                          <i class="fa fa-star"></i>
+                          <span>About</span>
+                      </a>
+                  </li>
+                  
+                  <li class="mt4">
+                      <a href="FAQ.html">
+                          <i class="fa fa-question"></i>
+                          <span>FAQ</span>
+                      </a>
+                  </li>
+                  
+            
+                  <div id=log></div>
+              
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+
+ <section id="main-content">
+          <section class="wrapper site-min-height">
+          <h3 style="color: #FF0080"><i class="fa fa-angle-right"></i> Contact Us</h3>
+          	
+          	<div class="row mt">
+          		<div class="col-lg-12"  >
+          		<div id=div1>
+
+		<div   id= Item   class="well form-horizontal"
+			role="form">
+			<fieldset>
+				<legend> Contact Us Form</legend>
+ 				
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="Name">
+						Name: </label>
+					<div class="col-sm-10">
+						<input name="Name" id="Name" type="text" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="Email" > Email:</label>
+					<div class="col-sm-10">
+						<input name="Email" id="Email" type="email" required><br>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="Comment"> Comment:</label>
+					<div class="col-sm-10">
+						<textarea rows="10" cols="30" id="Comment" required>Add comments here.</textarea>
+					</div>
+				</div>
+				<br>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button name="action" id="input" type="submit"
+							class="btn btn-primary">Send</button>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	
+	
+	
+	</div>
+	
+
+	
+	</div>
+          		<p></p>
+          		</div>
+          		
+          	</div>
+          	
+			
+		</section><! --/wrapper -->
+      </section>
+
+     
+    <title>MEZ-Price Comparison!</title>
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+
+    <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              <p>&copy Created by: Rana Alshemali  ra2834a@american.edu.</p>
+              <a href="#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+  </body>
+</html>
