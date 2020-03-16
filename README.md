@@ -12,8 +12,8 @@ citing all references and materials used.
 - Parse (Cloud Database): https://www.parse.com/docs/js/guide
 - Target (Retail Store): http://www.target.com/
 - BestBuy (Retail Store): http://www.bestbuy.com/
-- CSS Template: http://www.free-css.com/free-css-templates/page192/dashgum#shout
-- Home Page background: https://verdemedia.com/wp-content/uploads/2015/08/bigstock-Online-Shopping-84808067.jpg
+- Original CSS Template: http://www.free-css.com/free-css-templates/page192/dashgum#shout
+- Original Home Page background: https://verdemedia.com/wp-content/uploads/2015/08/bigstock-Online-Shopping-84808067.jpg
 
 ### Team Members:
 1. Rana Alshemali
